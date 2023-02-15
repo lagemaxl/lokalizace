@@ -20,6 +20,9 @@ function App() {
   const [rightposition] = useState([0, 0]);
   let positions = [position, rightposition];
 
+  const [result, setResult] = useState(false);
+
+
   const MapEvents = () => {
     useMapEvents({
       click(e) {
@@ -33,8 +36,18 @@ function App() {
 }
 
     function Zkontrlovatbtn(){
-      console.log("Zkontrolovats");  
+      setResult(true);
     }
+
+    function Result() {
+      return(
+        <>
+        <Marker position={rightposition} className="marker" />
+        <Polyline positions={positions} color={'blue'}/>
+        </>
+      )
+    }
+
   
 
   return (
@@ -44,7 +57,7 @@ function App() {
       <h1 className="title">Loklaizace</h1>
       <h1>Najdi na mapě:</h1>
       <Task 
-      title = "Praha"
+      title = "Střed mapy"
       />
       <h1>Další v pořadí:</h1>
       <Task 
@@ -60,7 +73,7 @@ function App() {
       title = "Praha"
       />
 
-      <button className="btn-primary" onClick={Zkontrlovatbtn()}>Zkontrolovat</button>
+      <button className="btn-primary" onClick={Zkontrlovatbtn}>Zkontrolovat</button>
     </div>
 
 
@@ -74,9 +87,10 @@ function App() {
         
         <MapEvents />
         
-        <Marker position={rightposition}/>
         <Marker position={position} />
-        <Polyline positions={positions} color={'blue'} />
+
+        {result ? <Result/> : <></>}
+
     </MapContainer>
   
     </div>

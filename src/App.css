@@ -14,6 +14,14 @@ body {
   box-sizing: border-box;
 }
 
+.isVisible {
+  display: none;
+}
+
+.marker {
+  background-color: green;
+}
+
 .leaflet-container{
   width: 80%;
   height: 100vh;
