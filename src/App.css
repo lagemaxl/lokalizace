@@ -20,6 +20,7 @@ body {
 
 .marker {
   background-color: green;
+  color: #4CAF50;
 }
 
 .leaflet-container{

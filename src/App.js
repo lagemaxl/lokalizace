@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { MapContainer, Marker, TileLayer, useMapEvents, Polyline} from 'react-leaflet';
+import * as L from "leaflet";
 import './App.css';
 
 
@@ -22,6 +23,30 @@ function App() {
 
   const [result, setResult] = useState(false);
 
+//výpočet vzdálenosti
+/*
+const getDistance = (lat1, lng1, lat2, lng2) => {
+  const R = 6371; // Poloměr Země v kilometrech
+  const dLat = deg2rad(lat2 - lat1);
+  const dLng = deg2rad(lng2 - lng1);
+  const a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
+    Math.sin(dLng / 2) * Math.sin(dLng / 2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  const distance = R * c;
+  return distance;
+};
+
+const deg2rad = (deg) => {
+  return deg * (Math.PI / 180);
+};
+
+const totalDistance = getDistance(latlngs[0][0], latlngs[0][1], latlngs[1][0], latlngs[1][1]);
+
+const distanceInKm = L.GeometryUtil.readableDistance(totalDistance * 1000, true);
+*/
+//end
 
   const MapEvents = () => {
     useMapEvents({
@@ -42,7 +67,16 @@ function App() {
     function Result() {
       return(
         <>
-        <Marker position={rightposition} className="marker" />
+        <Marker position={rightposition} className="marker"
+                  icon={
+                    new L.Icon({
+                      iconUrl: `https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png`,
+                      shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+                      iconSize: [25, 41],
+                      iconAnchor: [12, 41]
+                    })
+                  }
+        />
         <Polyline positions={positions} color={'blue'}/>
         </>
       )
@@ -57,7 +91,7 @@ function App() {
       <h1 className="title">Loklaizace</h1>
       <h1>Najdi na mapě:</h1>
       <Task 
-      title = "Střed mapy"
+      title = "Null island"
       />
       <h1>Další v pořadí:</h1>
       <Task 
