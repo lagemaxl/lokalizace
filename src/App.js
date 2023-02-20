@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { MapContainer, Marker, TileLayer, useMapEvents, Polyline} from 'react-leaflet';
-import * as L from "leaflet";
+import * as L from 'leaflet';
 import './App.css';
 
 
@@ -23,30 +23,6 @@ function App() {
 
   const [result, setResult] = useState(false);
 
-//výpočet vzdálenosti
-/*
-const getDistance = (lat1, lng1, lat2, lng2) => {
-  const R = 6371; // Poloměr Země v kilometrech
-  const dLat = deg2rad(lat2 - lat1);
-  const dLng = deg2rad(lng2 - lng1);
-  const a =
-    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-    Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
-    Math.sin(dLng / 2) * Math.sin(dLng / 2);
-  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-  const distance = R * c;
-  return distance;
-};
-
-const deg2rad = (deg) => {
-  return deg * (Math.PI / 180);
-};
-
-const totalDistance = getDistance(latlngs[0][0], latlngs[0][1], latlngs[1][0], latlngs[1][1]);
-
-const distanceInKm = L.GeometryUtil.readableDistance(totalDistance * 1000, true);
-*/
-//end
 
   const MapEvents = () => {
     useMapEvents({
@@ -55,6 +31,11 @@ const distanceInKm = L.GeometryUtil.readableDistance(totalDistance * 1000, true)
         console.log(e.latlng.lng);
         setPosition([e.latlng.lat, e.latlng.lng]);
         positions = [position, rightposition];
+        /*
+        let totalDistance = L.GeometryUtil.length(positions);
+        let distanceInKm = L.GeometryUtil.readableDistance(totalDistance, true);
+        console.log(distanceInKm);
+        */
       },
     });
     return false;
@@ -82,7 +63,7 @@ const distanceInKm = L.GeometryUtil.readableDistance(totalDistance * 1000, true)
       )
     }
 
-  
+    
 
   return (
     <div className="App">
@@ -124,6 +105,7 @@ const distanceInKm = L.GeometryUtil.readableDistance(totalDistance * 1000, true)
         <Marker position={position} />
 
         {result ? <Result/> : <></>}
+
 
     </MapContainer>
   
