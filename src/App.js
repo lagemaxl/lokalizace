@@ -20,6 +20,7 @@ function App() {
   const [position, setPosition] = useState([50.6813617, 14.0078506]);
   const [rightposition] = useState([0, 0]);
   let positions = [position, rightposition];
+  const [MouseFree, setMouseFree] = useState(true);
 
   const [result, setResult] = useState(false);
 
@@ -29,7 +30,9 @@ function App() {
       click(e) {
         console.log(e.latlng.lat);
         console.log(e.latlng.lng);
-        setPosition([e.latlng.lat, e.latlng.lng]);
+        if(MouseFree){
+          setPosition([e.latlng.lat, e.latlng.lng]);
+        }
         positions = [position, rightposition];
         /*
         let totalDistance = L.GeometryUtil.length(positions);
@@ -43,9 +46,11 @@ function App() {
 
     function Zkontrlovatbtn(){
       setResult(true);
+      setMouseFree(false);
     }
 
     function Result() {
+
       return(
         <>
         <Marker position={rightposition} className="marker"
