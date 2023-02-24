@@ -21,7 +21,7 @@ function App() {
   const [rightposition] = useState([0, 0]);
   let positions = [position, rightposition];
   const [MouseFree, setMouseFree] = useState(true);
-
+  let reskm = 0;
   const [result, setResult] = useState(false);
 
 
@@ -34,11 +34,6 @@ function App() {
           setPosition([e.latlng.lat, e.latlng.lng]);
         }
         positions = [position, rightposition];
-        /*
-        let totalDistance = L.GeometryUtil.length(positions);
-        let distanceInKm = L.GeometryUtil.readableDistance(totalDistance, true);
-        console.log(distanceInKm);
-        */
       },
     });
     return false;
@@ -47,6 +42,9 @@ function App() {
     function Zkontrlovatbtn(){
       setResult(true);
       setMouseFree(false);
+      const res = Distance(position[0], position[1], rightposition[0], rightposition[1])
+      console.log(res);
+      reskm = res;
     }
 
     function Result() {
@@ -67,6 +65,29 @@ function App() {
         </>
       )
     }
+
+
+    function Distance(lat1, lon1, lat2, lon2) {
+      const earthRadiusKm = 6371;
+    
+      const dLat = degreesToRadians(lat2 - lat1);
+      const dLon = degreesToRadians(lon2 - lon1);
+    
+      const lat1Rad = degreesToRadians(lat1);
+      const lat2Rad = degreesToRadians(lat2);
+    
+      const a =
+        Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.sin(dLon / 2) * Math.sin(dLon / 2) * Math.cos(lat1Rad) * Math.cos(lat2Rad);
+      const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    
+      return earthRadiusKm * c;
+    }
+    
+    function degreesToRadians(degrees) {
+      return degrees * Math.PI / 180;
+    }
+    
 
     
 
@@ -94,6 +115,12 @@ function App() {
       />
 
       <button className="btn-primary" onClick={Zkontrlovatbtn}>Zkontrolovat</button>
+
+      <div>
+        <h1 className="title">Vzdálenost: {reskm} km</h1>
+        <h1 className="title">Počet bodů za tohle kolo: 0</h1>
+        <h1 className="title">Celkový počet bodů: 0</h1>
+      </div>
     </div>
 
 
