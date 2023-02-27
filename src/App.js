@@ -105,13 +105,13 @@ function App() {
       title = "Praha"
       />
             <Task 
-      title = "Praha"
+      title = "Ústí nad Labem"
       />
             <Task 
-      title = "Praha"
+      title = "Hell"
       />
             <Task 
-      title = "Praha"
+      title = "Peklo"
       />
 
       <button className="btn-primary" onClick={Zkontrlovatbtn}>Zkontrolovat</button>
