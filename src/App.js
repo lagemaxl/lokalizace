@@ -21,8 +21,8 @@ function App() {
   const [rightposition] = useState([0, 0]);
   let positions = [position, rightposition];
   const [MouseFree, setMouseFree] = useState(true);
-  let reskm = 0;
   const [result, setResult] = useState(false);
+  const [resultnum, setResultnum] = useState(0)
 
 
   const MapEvents = () => {
@@ -44,7 +44,7 @@ function App() {
       setMouseFree(false);
       const res = Distance(position[0], position[1], rightposition[0], rightposition[1])
       console.log(res);
-      reskm = res;
+      setResultnum(res.toFixed(1))
     }
 
     function Result() {
@@ -117,7 +117,7 @@ function App() {
       <button className="btn-primary" onClick={Zkontrlovatbtn}>Zkontrolovat</button>
 
       <div>
-        <h1 className="title">Vzdálenost: {reskm} km</h1>
+        <h1 className="title">Vzdálenost: {resultnum} km</h1>
         <h1 className="title">Počet bodů za tohle kolo: 0</h1>
         <h1 className="title">Celkový počet bodů: 0</h1>
       </div>
@@ -146,3 +146,11 @@ function App() {
 }
 
 export default App;
+
+      /*
+      <div>
+        <h1 className="title">Vzdálenost: {reskm} km</h1>
+        <h1 className="title">Počet bodů za tohle kolo: 0</h1>
+        <h1 className="title">Celkový počet bodů: 0</h1>
+      </div>
+      */
