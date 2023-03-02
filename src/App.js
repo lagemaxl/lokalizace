@@ -13,7 +13,7 @@ function Task(props){
   )
 }
 
-let numberOfLocations = getRandomNumber(0, 22);
+let numberOfLocations = getRandomNumber(0, 76);
 
 function getRandomNumber(min,max) {
   return Math.floor(Math.random() * (max - min) ) + min;
@@ -73,7 +73,7 @@ function App() {
     }
 
     function Next(){
-      numberOfLocations = getRandomNumber(0, 22);
+      numberOfLocations = getRandomNumber(0, 76);
       setMouseFree(true);
       setResult(false);
       setButtonswitch(true);
