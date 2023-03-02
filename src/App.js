@@ -57,6 +57,7 @@ function App() {
     });
     return false;
 }
+    
 
     function Zkontrlovatbtn(){
       setResult(true);
@@ -118,6 +119,8 @@ function App() {
     function degreesToRadians(degrees) {
       return degrees * Math.PI / 180;
     }
+
+
   return (
   <div className="App">
 
@@ -137,7 +140,7 @@ function App() {
       title = "Ústí nad Labem"
       />
       <Task 
-      title = "Hell"
+      title = "Hello"
       />
       <Task 
       title = "Peklo"
