@@ -17,12 +17,12 @@ function Task(props){
 function App() {
   const [center] = useState([50.6813617, 14.0078506]);
   const [position, setPosition] = useState([50.6813617, 14.0078506]);
-  let [rightposition] = useState([0, 0]);
   const [MouseFree, setMouseFree] = useState(true);
   const [result, setResult] = useState(false);
   const [resultnum, setResultnum] = useState(0)
   const [locations, setLocations] = useState([]); //lokace které se budou brát z JSON soubo
   const [isLoading, setIsLoading] = useState(true);
+  const [buttonswitch, setButtonswitch] = useState(true);
 
   useEffect(() => {
     fetch("locations.json")
@@ -41,7 +41,7 @@ function App() {
 
   let numberOfLocations = 1;
 
-  rightposition = [locations[numberOfLocations].l1, locations[numberOfLocations].l2];
+  let rightposition = [locations[numberOfLocations].l1, locations[numberOfLocations].l2];
   let positions = [position, rightposition];
 
 
@@ -65,15 +65,17 @@ function App() {
       const res = Distance(position[0], position[1], rightposition[0], rightposition[1])
       console.log(res);
       setResultnum(res.toFixed(1))
-      Next();
+      setButtonswitch(false);
     }
 
     function Next(){
-      //setMouseFree(true);
-
+      setMouseFree(true);
+      setResult(false);
+      setButtonswitch(true);
+      numberOfLocations = 0;
       rightposition = [locations[numberOfLocations].l1, locations[numberOfLocations].l2];
       positions = [position, rightposition];
-      
+    
     }
 
     function Result() {
@@ -141,8 +143,7 @@ function App() {
       title = "Peklo"
       />
 
-      <button className="btn-primary" onClick={Zkontrlovatbtn}>Zkontrolovat</button>
-      <button className="btn-primary" onClick={Next}>Další</button>
+      {buttonswitch ? <button className="btn-primary" onClick={Zkontrlovatbtn}>Zkontrolovat</button> :  <button className="btn-primary" onClick={Next}>Další</button>}
 
       <div>
         <h1 className="title">Vzdálenost: {resultnum} km</h1>
