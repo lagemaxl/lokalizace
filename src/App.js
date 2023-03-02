@@ -17,13 +17,11 @@ function Task(props){
 function App() {
   const [center] = useState([50.6813617, 14.0078506]);
   const [position, setPosition] = useState([50.6813617, 14.0078506]);
-  const [rightposition] = useState([0, 0]);
-  let positions = [position, rightposition];
+  let [rightposition] = useState([0, 0]);
   const [MouseFree, setMouseFree] = useState(true);
   const [result, setResult] = useState(false);
   const [resultnum, setResultnum] = useState(0)
   const [locations, setLocations] = useState([]); //lokace které se budou brát z JSON soubo
-
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -41,6 +39,10 @@ function App() {
     return <div>Loading...</div>;
   }
 
+  let numberOfLocations = 1;
+
+  rightposition = [locations[numberOfLocations].l1, locations[numberOfLocations].l2];
+  let positions = [position, rightposition];
 
 
   const MapEvents = () => {
@@ -63,6 +65,15 @@ function App() {
       const res = Distance(position[0], position[1], rightposition[0], rightposition[1])
       console.log(res);
       setResultnum(res.toFixed(1))
+      Next();
+    }
+
+    function Next(){
+      //setMouseFree(true);
+
+      rightposition = [locations[numberOfLocations].l1, locations[numberOfLocations].l2];
+      positions = [position, rightposition];
+      
     }
 
     function Result() {
@@ -113,7 +124,7 @@ function App() {
     <h1 className="title">Loklaizace</h1>
       <h1>Najdi na mapě:</h1>
       <Task 
-      title = {locations[1].name}
+      title = {locations[numberOfLocations].name}
       //title = "Null Island"
       />
       <h1>Další v pořadí:</h1>
@@ -131,13 +142,13 @@ function App() {
       />
 
       <button className="btn-primary" onClick={Zkontrlovatbtn}>Zkontrolovat</button>
+      <button className="btn-primary" onClick={Next}>Další</button>
 
       <div>
         <h1 className="title">Vzdálenost: {resultnum} km</h1>
         <h1 className="title">Počet bodů za tohle kolo: 0</h1>
         <h1 className="title">Celkový počet bodů: 0</h1>
       </div>
-
 
     </div>      
 
