@@ -13,6 +13,7 @@ function Task(props){
   )
 }
 
+let numberOfLocations = 1;
 
 function App() {
   const [center] = useState([50.6813617, 14.0078506]);
@@ -38,8 +39,6 @@ function App() {
   if (isLoading) {
     return <div>Loading...</div>;
   }
-
-  let numberOfLocations = 1;
 
   let rightposition = [locations[numberOfLocations].l1, locations[numberOfLocations].l2];
   let positions = [position, rightposition];
@@ -69,6 +68,7 @@ function App() {
     }
 
     function Next(){
+      numberOfLocations = 0;
       setMouseFree(true);
       setResult(false);
       setButtonswitch(true);
