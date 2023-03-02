@@ -15,7 +15,6 @@ function Task(props){
 
 
 function App() {
-
   const [center] = useState([50.6813617, 14.0078506]);
   const [position, setPosition] = useState([50.6813617, 14.0078506]);
   const [rightposition] = useState([0, 0]);
@@ -25,14 +24,22 @@ function App() {
   const [resultnum, setResultnum] = useState(0)
   const [locations, setLocations] = useState([]); //lokace které se budou brát z JSON soubo
 
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     fetch("locations.json")
       .then(response => response.json())
-      .then(data => setLocations(data.animals))
+      .then(data => {
+        setLocations(data.locations);
+        setIsLoading(false); // označíme, že data byla načtena
+      })
       .catch(error => console.error(error));
   }, []);
 
-
+  // Zde se vykreslí pouze pokud se data načtou
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
 
 
@@ -98,30 +105,28 @@ function App() {
     function degreesToRadians(degrees) {
       return degrees * Math.PI / 180;
     }
-    
-
-    
-
   return (
-    <div className="App">
+  <div className="App">
 
     <div className="rightPanel">
-      <h1 className="title">Loklaizace</h1>
+
+    <h1 className="title">Loklaizace</h1>
       <h1>Najdi na mapě:</h1>
       <Task 
-      title = "null island"//{locations[1].name}
+      title = {locations[1].name}
+      //title = "Null Island"
       />
       <h1>Další v pořadí:</h1>
       <Task 
       title = "Praha"
       />
-            <Task 
+      <Task 
       title = "Ústí nad Labem"
       />
-            <Task 
+      <Task 
       title = "Hell"
       />
-            <Task 
+      <Task 
       title = "Peklo"
       />
 
@@ -134,7 +139,8 @@ function App() {
       </div>
 
 
-    </div>
+    </div>      
+
 
 
     <MapContainer center={center} zoom={2} className="leaflet-container">
