@@ -13,7 +13,11 @@ function Task(props){
   )
 }
 
-let numberOfLocations = 1;
+let numberOfLocations = getRandomNumber(0, 22);
+
+function getRandomNumber(min,max) {
+  return Math.floor(Math.random() * (max - min) ) + min;
+}
 
 function App() {
   const [center] = useState([50.6813617, 14.0078506]);
@@ -69,11 +73,10 @@ function App() {
     }
 
     function Next(){
-      numberOfLocations = 0;
+      numberOfLocations = getRandomNumber(0, 22);
       setMouseFree(true);
       setResult(false);
       setButtonswitch(true);
-      numberOfLocations = 0;
       rightposition = [locations[numberOfLocations].l1, locations[numberOfLocations].l2];
       positions = [position, rightposition];
     
@@ -132,18 +135,18 @@ function App() {
       title = {locations[numberOfLocations].name}
       //title = "Null Island"
       />
-      <h1>Další v pořadí:</h1>
+      <h1>Dokončené:</h1>
       <Task 
-      title = "Praha"
+      title = "Nic"
       />
       <Task 
-      title = "Ústí nad Labem"
+      title = "Nic"
       />
       <Task 
-      title = "Hello"
+      title = "Nic"
       />
       <Task 
-      title = "Peklo"
+      title = "Nic"
       />
 
       {buttonswitch ? <button className="btn-primary" onClick={Zkontrlovatbtn}>Zkontrolovat</button> :  <button className="btn-primary" onClick={Next}>Další</button>}
