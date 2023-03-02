@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
 import { MapContainer, Marker, TileLayer, useMapEvents, Polyline} from 'react-leaflet';
 import * as L from 'leaflet';
 import './App.css';
@@ -23,6 +23,17 @@ function App() {
   const [MouseFree, setMouseFree] = useState(true);
   const [result, setResult] = useState(false);
   const [resultnum, setResultnum] = useState(0)
+  const [locations, setLocations] = useState([]); //lokace které se budou brát z JSON soubo
+
+  useEffect(() => {
+    fetch("locations.json")
+      .then(response => response.json())
+      .then(data => setLocations(data.animals))
+      .catch(error => console.error(error));
+  }, []);
+
+
+
 
 
   const MapEvents = () => {
@@ -98,7 +109,7 @@ function App() {
       <h1 className="title">Loklaizace</h1>
       <h1>Najdi na mapě:</h1>
       <Task 
-      title = "Null island"
+      title = {locations[1].name}
       />
       <h1>Další v pořadí:</h1>
       <Task 
@@ -121,6 +132,8 @@ function App() {
         <h1 className="title">Počet bodů za tohle kolo: 0</h1>
         <h1 className="title">Celkový počet bodů: 0</h1>
       </div>
+
+
     </div>
 
 
@@ -154,3 +167,15 @@ export default App;
         <h1 className="title">Celkový počet bodů: 0</h1>
       </div>
       */
+
+      /*
+            <div>
+      {animals.map(animal => (
+        <div key={animal.name}>
+          <h2>{animal.name}</h2>
+          <p>Value 1: {animal.value1}</p>
+          <p>Value 2: {animal.value2}</p>
+        </div>
+      ))}
+    </div>
+    */
