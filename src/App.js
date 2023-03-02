@@ -109,7 +109,7 @@ function App() {
       <h1 className="title">Loklaizace</h1>
       <h1>Najdi na mapě:</h1>
       <Task 
-      title = {locations[1].name}
+      title = "null island"//{locations[1].name}
       />
       <h1>Další v pořadí:</h1>
       <Task 
