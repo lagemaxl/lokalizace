@@ -8,7 +8,7 @@ body {
   background-color: black;
 }
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -20,13 +20,13 @@ body {
 
 .marker {
   background-color: green;
-  color: #4CAF50;
+  color: #4caf50;
 }
 
-.leaflet-container{
+.leaflet-container {
   width: 80%;
   height: 100vh;
-  background-color:black;
+  background-color: black;
 }
 
 /* RIGHT PANEL CSS */
@@ -63,7 +63,7 @@ body {
 }
 
 .btn-primary {
-  background-color: rgb(33, 159, 213) ;
+  background-color: rgb(33, 159, 213);
   border: none;
   color: white;
   border-radius: 15px;
