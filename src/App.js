@@ -21,6 +21,8 @@ function Task(props) {
 let numberOfLocations = getRandomNumber(0, 76);
 
 
+
+
 function getRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
