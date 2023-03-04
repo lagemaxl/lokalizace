@@ -1,11 +1,6 @@
 {
   "locations": [
     {
-      "name": "Null Island",
-      "l1": 0,
-      "l2": 0
-    },
-    {
       "name": "Rumburk",
       "l1": 50.953076,
       "l2": 14.5440137
