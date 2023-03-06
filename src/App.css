@@ -76,3 +76,70 @@ body {
   cursor: pointer;
   margin-bottom: 0px;
 }
+
+
+@media only screen and (max-width: 800px){
+
+  h1{
+    display: none;
+  }
+
+  .leaflet-container {
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+  }
+  
+  /* RIGHT PANEL CSS */
+  
+  .rightPanel {
+    width: 100%;
+    height: 10vh;
+    float: right;
+    background-color: #f2f2f2;
+  }
+  
+  .title {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px;
+    display: none;
+  }
+  
+  .task {
+    background-color: white;
+    margin: 10px;
+    border-radius: 15px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  }
+  
+  .placeTOfind {
+    font-size: 20px;
+    margin: 10px;
+  }
+  
+  .correct-bar {
+    /*background-color: #4CAF50;*/
+    width: 100%;
+    height: 5px;
+  }
+  
+  .btn-primary {
+    background-color: rgb(33, 159, 213);
+    border: none;
+    color: white;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    position: fixed;
+    z-index: 1000;
+    width: 80%;
+    margin-top: 80vh;
+    margin-left: -40%;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+
+}

@@ -158,11 +158,6 @@ function App() {
           title={locations[numberOfLocations].name}
           //title = "Null Island"
         />
-        <h1>Dokončené:</h1>
-        <Task title="Nic" />
-        <Task title="Nic" />
-        <Task title="Nic" />
-        <Task title="Nic" />
 
         {buttonswitch ? (
           <button className="btn-primary" onClick={Zkontrlovatbtn}>
