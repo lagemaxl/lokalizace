@@ -166,7 +166,7 @@ body {
   
   .rightPanel {
     width: 100%;
-    height: 20vh;
+    height: 25vh;
     float: left;
     background-color: black
   }
@@ -203,7 +203,7 @@ body {
     position: fixed;
     z-index: 1000;
     width: 80%;
-    margin-top: 70vh;
+    margin-top: 75vh;
     margin-left: -90%;
     text-decoration: none;
     display: inline-block;
