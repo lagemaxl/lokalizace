@@ -170,8 +170,8 @@ function App() {
         )}
 
         <div>
-          <h1 className="title">Vzdálenost: {resultnum} km</h1>
-          <h1 className="title">Celkový počet bodů: {score}</h1>
+          <h1 className="title" id="res">Vzdálenost: {resultnum} km</h1>
+          <h1 className="title" id="res">Počet bodů: {score}</h1>
         </div>
       </div>
 
