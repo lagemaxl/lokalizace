@@ -20,9 +20,6 @@ function Task(props) {
 
 let numberOfLocations = getRandomNumber(0, 76);
 
-
-
-
 function getRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
@@ -84,7 +81,7 @@ function App() {
     );
     console.log(res);
     setResultnum(res.toFixed(1));
-    if(res < 750 && res > 0){
+    if (res < 750 && res > 0) {
       setScore(score + 1);
       console.log(score);
     }
@@ -170,8 +167,12 @@ function App() {
         )}
 
         <div>
-          <h1 className="title" id="res">Vzdálenost: {resultnum} km</h1>
-          <h1 className="title" id="res">Počet bodů: {score}</h1>
+          <h1 className="title" id="res">
+            Vzdálenost: {resultnum} km
+          </h1>
+          <h1 className="title" id="res">
+            Počet bodů: {score}
+          </h1>
         </div>
       </div>
 
